@@ -1,0 +1,28 @@
+.textarea-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.textarea-container {
+  width: 48%;
+}
+
+.textarea-container:nth-child(1),
+.textarea-container:nth-child(2) {
+  margin-bottom: 40px;
+}
+
+textarea {
+  width: 100%;
+  height: 150px;
+  border-radius: 5px;
+}
+
+.textarea-container div {
+  width: 100%;
+  height: 150px;
+  background-color: white;
+  border: 1px dashed grey;
+}

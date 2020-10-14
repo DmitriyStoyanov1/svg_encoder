@@ -12,10 +12,12 @@
 .textarea-container:nth-child(1),
 .textarea-container:nth-child(2) {
   margin-bottom: 40px;
+  padding-top: 20px;
 }
 
 textarea {
   width: 100%;
+  font-size: 12px !important;
   height: 150px;
   border-radius: 5px;
 }
@@ -24,5 +26,7 @@ textarea {
   width: 100%;
   height: 150px;
   background-color: white;
+  background-position: center;
+  background-repeat: no-repeat;
   border: 1px dashed grey;
 }

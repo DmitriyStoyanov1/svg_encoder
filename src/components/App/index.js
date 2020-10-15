@@ -69,11 +69,53 @@ class App extends Component {
     return 'Choosen File'
   }
 
+  copyFunction = value => {
+    const textArea = document.createElement("textarea")
+    document.body.appendChild(textArea)
+    textArea.value = value
+    textArea.select();
+    document.execCommand("copy")
+    textArea.style.display = 'none'
+    document.body.removeChild(textArea)
+  }
+
+  changeBackgroundColor = event => {
+    const background = document.querySelector(".resultContainer")
+
+    if(event.target.className === "white-button") {
+      background.classList.add(event.target.className)
+      background.classList.remove("yellow-button")
+      background.classList.remove("black-button")
+    }
+
+    if(event.target.className === "black-button") {
+      background.classList.add(event.target.className)
+      background.classList.remove("yellow-button")
+      background.classList.remove("white-button")
+    }
+
+    if(event.target.className === "yellow-button") {
+      background.classList.add(event.target.className)
+      background.classList.remove("black-button")
+      background.classList.remove("white-button")
+    }
+    
+    console.log(event.target.className)
+    console.log(background)
+  }
+
   render() {
     const encodedSvg = encodeSvg(this.state.inputValue)
 
     const formattedForCssValue = formatForCss(encodedSvg)
     const previewUrl = createPreviewUrl(encodedSvg)
+
+    const copyButtonName = "Copy"
+    const exampleButtonName = "Example"
+
+    const insert = "Insert SVG:"
+    const encoded = "Take encoded:"
+    const css = "Ready for CSS:"
 
     return (
       <div className="App">
@@ -81,8 +123,8 @@ class App extends Component {
           style={{
             textAlign: "center",
             margin: 0,
-            paddingTop: "50px",
-            paddingBottom: "50px",
+            paddingTop: "20px",
+            paddingBottom: "20px",
           }}
         >
           URL-encoder for SVG
@@ -116,7 +158,10 @@ class App extends Component {
 
         <div className="textarea-wrapper">
           <div className="textarea-container">
+
             <Textarea
+              header={insert}
+              buttonName={exampleButtonName}
               onChange={this.handleTextareaChange}
               value={this.state.inputValue}
             />
@@ -124,6 +169,9 @@ class App extends Component {
 
           <div className="textarea-container">
             <Textarea
+              onClick={this.copyFunction}
+              header={encoded}
+              buttonName={copyButtonName}
               isReadonly
               value={encodedSvg}
             />
@@ -131,13 +179,25 @@ class App extends Component {
 
           <div className="textarea-container">
             <Textarea
+              onClick={this.copyFunction}
+              header={css}
+              buttonName={copyButtonName}
               isReadonly
               value={formattedForCssValue}
             />
           </div>
 
           <div className="textarea-container">
-            <div style={{ backgroundImage: previewUrl }}></div>
+            <h4>Preview:</h4>
+            <div className="button-wrapper">
+              <p>Background:</p>
+              <button onClick={this.changeBackgroundColor}className="white-button"></button>
+              <button onClick={this.changeBackgroundColor}className="yellow-button"></button>
+              <button onClick={this.changeBackgroundColor}className="black-button"></button>
+            </div> 
+            <div className="resultContainer white-button">
+              <div style={{ backgroundImage: previewUrl }} className="image"></div>
+            </div>
           </div>
         </div>
       </div>

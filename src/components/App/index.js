@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Textarea from "../Textarea";
 import { encodeSvg, formatForCss, createPreviewUrl } from "../../utils";
+import classNames from "classnames";
 
 class App extends Component {
   state = {
@@ -79,29 +80,34 @@ class App extends Component {
     document.body.removeChild(textArea)
   }
 
+  exampleFunction = value => {
+    
+    value = `<svg width="20"><rect fill="#fc0" width="20" height="20"/><line stroke="black" x1="0" y1="0" x2="20" y2="20"/></svg>`
+
+    this.setState({
+      inputValue: value
+    })
+  }
+
   changeBackgroundColor = event => {
     const background = document.querySelector(".resultContainer")
+    const currentClasses = classNames({
 
-    if(event.target.className === "white-button") {
-      background.classList.add(event.target.className)
-      background.classList.remove("yellow-button")
-      background.classList.remove("black-button")
-    }
+      "white-button": event.target.className === "white-button",
+      "yellow-button": event.target.className === "yellow-button",
+      "black-button": event.target.className === "black-button"
 
-    if(event.target.className === "black-button") {
-      background.classList.add(event.target.className)
-      background.classList.remove("yellow-button")
-      background.classList.remove("white-button")
-    }
+    })
 
-    if(event.target.className === "yellow-button") {
-      background.classList.add(event.target.className)
-      background.classList.remove("black-button")
-      background.classList.remove("white-button")
-    }
-    
-    console.log(event.target.className)
-    console.log(background)
+    background.classList.add(currentClasses)
+
+    // const classesArr = [...background.classList]
+
+    // const newArr = classesArr.filter(currentClass => currentClass.includes("button"))
+
+    // background.classList.remove(newArr[0])
+    // background.classList.add(event.target.className)
+   
   }
 
   render() {
@@ -160,6 +166,7 @@ class App extends Component {
           <div className="textarea-container">
 
             <Textarea
+              onClick={this.exampleFunction}
               header={insert}
               buttonName={exampleButtonName}
               onChange={this.handleTextareaChange}

@@ -8,7 +8,8 @@ const Textarea = (props) => {
   return (
     <React.Fragment>
       <h4>{header}</h4>
-      <button onClick={() => {onClick(value)}}>{buttonName}</button>
+      <button onClick={() => {onClick(value)}}
+      >{buttonName}</button>
       <textarea
         value={value}
         onChange={onChange}

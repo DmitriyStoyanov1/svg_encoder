@@ -15,8 +15,8 @@
 
 .textarea-container:nth-child(1),
 .textarea-container:nth-child(2) {
-  margin-bottom: 40px;
-  padding-top: 20px;
+  margin-bottom: 20px;
+  padding-top: 0px;
 }
 
 textarea {
@@ -35,6 +35,7 @@ textarea {
   height: 150px;
   background-position: center;
   background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .button-wrapper {
@@ -54,20 +55,41 @@ textarea {
   padding: 0;
   border-radius: 50%;
   border: 1px solid rgba(0, 0, 0, 0.25);
-  outline: none;
+  outline: none !important;
   cursor: pointer;
 }
 
-.contrast-button-current {
+.white-button:focus,
+.yellow-button:focus,
+.black-button:focus {
   box-shadow: 0 0 0 3px #C04848;
 }
 
 .white-button {
   background-color: white;
 }
+
 .yellow-button {
   background-color: yellow;
 }
+
 .black-button {
   background-color: black;
+}
+
+.action-button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  align-self: center;
+  line-height: 1;
+  font-size: 18px;
+  outline: none !important;
+  color: #1f1462;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.action-button:hover {
+  color: #6358a7;
 }

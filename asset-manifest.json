@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/svg_encoder/static/css/main.b6d03f15.chunk.css",
+    "main.js": "/svg_encoder/static/js/main.536b680b.chunk.js",
+    "main.js.map": "/svg_encoder/static/js/main.536b680b.chunk.js.map",
+    "runtime-main.js": "/svg_encoder/static/js/runtime-main.b0af7e66.js",
+    "runtime-main.js.map": "/svg_encoder/static/js/runtime-main.b0af7e66.js.map",
+    "static/css/2.8aa5a7f8.chunk.css": "/svg_encoder/static/css/2.8aa5a7f8.chunk.css",
+    "static/js/2.6d9066ed.chunk.js": "/svg_encoder/static/js/2.6d9066ed.chunk.js",
+    "static/js/2.6d9066ed.chunk.js.map": "/svg_encoder/static/js/2.6d9066ed.chunk.js.map",
+    "index.html": "/svg_encoder/index.html",
+    "precache-manifest.c06bcbbeeed365c46819b8f7a9a6853b.js": "/svg_encoder/precache-manifest.c06bcbbeeed365c46819b8f7a9a6853b.js",
+    "service-worker.js": "/svg_encoder/service-worker.js",
+    "static/css/2.8aa5a7f8.chunk.css.map": "/svg_encoder/static/css/2.8aa5a7f8.chunk.css.map",
+    "static/css/main.b6d03f15.chunk.css.map": "/svg_encoder/static/css/main.b6d03f15.chunk.css.map",
+    "static/js/2.6d9066ed.chunk.js.LICENSE.txt": "/svg_encoder/static/js/2.6d9066ed.chunk.js.LICENSE.txt",
+    "static/media/TextArea.css": "/svg_encoder/static/media/ua.cf1a4bc6.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b0af7e66.js",
+    "static/css/2.8aa5a7f8.chunk.css",
+    "static/js/2.6d9066ed.chunk.js",
+    "static/css/main.b6d03f15.chunk.css",
+    "static/js/main.536b680b.chunk.js"
+  ]
+}

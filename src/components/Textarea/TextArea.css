@@ -5,6 +5,10 @@
   flex-wrap: wrap;
 }
 
+.mt-4, .my-4 {
+  margin-top: 0.8rem !important;
+}
+
 .textarea-container {
   width: 48%;
   display: flex;
@@ -21,9 +25,16 @@
 
 textarea {
   width: 100%;
-  font-size: 12px !important;
+  font-family: monospace;
+  background-color: #fafafa;
+  border: 1px solid #eeeeee;
+  font-size: 12px;
   height: 150px;
   border-radius: 5px;
+}
+
+textarea:focus {
+  outline-color: #64b5f6;
 }
 
 .textarea-container .resultContainer {
@@ -40,6 +51,8 @@ textarea {
 
 .button-wrapper {
   display: flex;
+  align-items: center;
+  margin-bottom: 6px;
 }
 
 .button-wrapper p {
@@ -47,22 +60,24 @@ textarea {
   align-self: center;
 }
 
+.textarea-container > label {
+  margin-bottom: 6px;
+}
+
+.textarea-container > button {
+  margin-bottom: 6px;
+}
+
 .button-wrapper button {
   display: block;
-  width: 2em;
-  height: 2em;
+  width: 24px;
+  height: 24px;
   margin-left: 5px;
   padding: 0;
   border-radius: 50%;
   border: 1px solid rgba(0, 0, 0, 0.25);
-  outline: none !important;
+  outline: none;
   cursor: pointer;
-}
-
-.white-button:focus,
-.yellow-button:focus,
-.black-button:focus {
-  box-shadow: 0 0 0 3px #C04848;
 }
 
 .white-button {
@@ -77,6 +92,15 @@ textarea {
   background-color: black;
 }
 
+.white-button:focus,
+.yellow-button:focus,
+.black-button:focus,
+.lang-button-wrapper .en:focus,
+.lang-button-wrapper .ru:focus,
+.lang-button-wrapper .ukr:focus {
+  box-shadow: 0 0 0 1px #C04848;
+}
+
 .action-button {
   padding: 0;
   border: 0;
@@ -84,12 +108,70 @@ textarea {
   align-self: center;
   line-height: 1;
   font-size: 18px;
+  font-weight: 300;
   outline: none !important;
-  color: #1f1462;
-  font-weight: 600;
+  color: #64b5f6;
+  border-bottom: 1px #64b5f6 dashed;
   cursor: pointer;
+  transition: 0.3s ease;
 }
 
 .action-button:hover {
   color: #6358a7;
+  border-color: #6358a7;
+}
+
+.lang-button-wrapper {
+  position: absolute;
+  top: 10px;
+  left: auto;
+  right: 0px;
+}
+
+.lang-button-wrapper button{
+  margin-left: 5px;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  outline: none;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+}
+
+.lang-button-wrapper .en {
+  background-image: url("../../flags/gb.svg");
+}
+
+.lang-button-wrapper .ru {
+  background-image: url("../../flags/ru.svg");
+}
+
+.lang-button-wrapper .ukr {
+  background-image: url("../../flags/ua.svg");
+}
+
+.custom-file-input:lang(en) ~ .custom-file-label::after {
+  content: '' !important;
+}
+
+.custom-file-label::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  display: none !important;
+  height: 0;
+  padding: 0;
+  line-height: 1.5;
+  color: #495057;
+  content: '';
+  background-color: none;
+  border-left: inherit;
+  border-radius: 0 0.25rem 0.25rem 0;
 }

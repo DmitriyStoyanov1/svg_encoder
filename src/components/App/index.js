@@ -3,6 +3,8 @@ import "./App.css";
 import Textarea from "../Textarea";
 import { encodeSvg, formatForCss, createPreviewUrl } from "../../utils";
 import classNames from "classnames";
+import { withTranslation } from 'react-i18next';
+import i18n from "../../i18n";
 
 class App extends Component {
   state = {
@@ -12,6 +14,11 @@ class App extends Component {
     isFileError: false,
     selectedBackground: 'white'
   };
+
+  handleChangeLang(lang) {
+    console.log('work')
+    i18n.changeLanguage(lang)
+  }
 
   fileInputRef = React.createRef()
 
@@ -62,13 +69,13 @@ class App extends Component {
   get fileLabelText() {
     if(this.state.isFileLoaded) {
       if(this.state.isFileError) {
-        return 'You can upload only svg file!'
+        return this.props.t('only_svg')
       }
 
       return this.state.fileName
     }
 
-    return 'Choosen File'
+    return this.props.t('choose')
   }
 
   copyFunction = (value) => {
@@ -102,29 +109,28 @@ class App extends Component {
     const encodedSvg = encodeSvg(this.state.inputValue)
     const formattedForCssValue = formatForCss(encodedSvg)
     const previewUrl = createPreviewUrl(encodedSvg)
+    
+    console.log(this.props.t)
+    console.log(this.props)
 
     return (
       <div className="App">
-        <h1
-          style={{
-            textAlign: "center",
-            margin: 0,
-            paddingTop: "10px",
-            paddingBottom: "10px",
-          }}
-        >
+        <h1 className="mt-4 mb-3 text-center">
           URL-encoder for SVG
         </h1>
-        <p>
-          Hello! The use of SVG in CSS without encoding is possible
-          only in Webkit based browsers. This application will help
-          you to quickly get CSS code from SVG. Go to encode!
-        </p>
+        
+        <div class="lang-button-wrapper">
+          <button className="en" onClick={() => this.handleChangeLang('en')}></button>
+          <button className="ru" onClick={() => this.handleChangeLang('ru')}></button>
+          <button className="ukr" onClick={() => this.handleChangeLang('ukr')}></button>
+        </div>
 
-        <div className="input-group mb-3">
+        <p className="mb-4 text-center">{this.props.t('description')}</p>
+
+        <div className="input-group mb-4">
           <div className="input-group-prepend">
             <span className="input-group-text" id="inputGroupFileAddon01">
-              Upload
+            {this.props.t('upload')}
             </span>
           </div>
           <div className="custom-file">
@@ -149,8 +155,8 @@ class App extends Component {
 
         <div className="textarea-wrapper">
           <div className="textarea-container">
-            <h4>Insert SVG:</h4>
-            <button className="action-button" onClick={() => this.exampleFunction(this.state.inputValue)}>Example</button>
+            <label>{this.props.t('insert')}</label>
+            <button className="action-button" onClick={() => this.exampleFunction(this.state.inputValue)}>{this.props.t('example')}</button>
             <Textarea
               onChange={this.handleTextareaChange}
               value={this.state.inputValue}
@@ -158,8 +164,8 @@ class App extends Component {
           </div>
 
           <div className="textarea-container">
-            <h4>Take encoded:</h4>
-            <button className="action-button" onClick={() => this.copyFunction(encodedSvg)}>Copy</button>
+            <label>{this.props.t('take_encoded')}</label>
+            <button className="action-button" onClick={() => this.copyFunction(encodedSvg)}>{this.props.t('copy')}</button>
             <Textarea
               isReadonly
               value={encodedSvg}
@@ -167,8 +173,8 @@ class App extends Component {
           </div>
 
           <div className="textarea-container">
-            <h4>Ready for CSS:</h4>
-            <button className="action-button" onClick={() => this.copyFunction(formattedForCssValue)}>Copy</button>
+            <label>{this.props.t('css')}</label>
+            <button className="action-button" onClick={() => this.copyFunction(formattedForCssValue)}>{this.props.t('copy')}</button>
             <Textarea
               isReadonly
               onClick={this.copyFunction}
@@ -177,9 +183,9 @@ class App extends Component {
           </div>
 
           <div className="textarea-container">
-            <h4>Preview:</h4>
+            <label>{this.props.t('preview')}</label>
             <div className="button-wrapper">
-              <p>Background:</p>
+              <p>{this.props.t('background')}</p>
               <button onClick={() => this.changeBackgroundColor('white')} className="white-button"></button>
               <button onClick={() => this.changeBackgroundColor('yellow')} className="yellow-button"></button>
               <button onClick={() => this.changeBackgroundColor('black')} className="black-button"></button>
@@ -194,4 +200,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withTranslation()(App);
